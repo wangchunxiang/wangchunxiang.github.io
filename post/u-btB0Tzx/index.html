@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>换了2019 MacBook Pro 15 | Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611641471435">
+<link rel="shortcut icon" href="/favicon.ico?v=1611641625050">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1476,6 +1476,7 @@
         <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/fAFtr36RJ/"" data-c="
           &lt;h3 id=&#34;为什么使用jwt&#34;&gt;为什么使用JWT？&lt;/h3&gt;
 &lt;p&gt;随着技术的发展，分布式web应用的普及，通过session管理用户登录状态成本越来越高，因此慢慢发展成为token的方式做登录身份校验，然后通过token去取redis中的缓存的用户信息，随着之后jwt的出现，校验方式更加简单便捷化，无需通过redis缓存，而是直接根据token取出保存的用户信息，以及对token可用性校验，单点登录更为简单。&lt;/p&gt;
+&lt;!-- more --&gt;
 &lt;h3 id=&#34;什么时候你应该用json-web-tokens&#34;&gt;什么时候你应该用JSON Web Tokens&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;下列场景中使用JSON Web Token是很有用的：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1489,9 +1490,9 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Header&lt;/strong&gt;（头部）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Payload&lt;/strong&gt;（载荷）&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Signature&lt;/strong&gt;（签证）&lt;br&gt;
-因此，一个典型的JWT看起来是这个样子的：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signature&lt;/strong&gt;（签证）&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;因此，一个典型的JWT看起来是这个样子的：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;xxxxx.yyyyy.zzzzz
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;接下来，具体看一下每一部分：&lt;/p&gt;
@@ -1539,11 +1540,13 @@
 &lt;p&gt;对payload进行Base64编码就得到JWT的第二部分&lt;br&gt;
 &lt;code&gt;注意，不要在JWT的payload或header中放置敏感信息，除非它们是加密的&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Signature&lt;/strong&gt;（签证）&lt;br&gt;
-jwt的第三部分是一个签证信息，这个签证信息由三部分组成：&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;header&lt;/strong&gt; (base64后的)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;payload&lt;/strong&gt; (base64后的)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;secret&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signature&lt;/strong&gt;（签证）jwt的第三部分是一个签证信息，这个签证信息由三部分组成：
+&lt;ul&gt;
+&lt;li&gt;header (base64后的)&lt;/li&gt;
+&lt;li&gt;payload (base64后的)&lt;/li&gt;
+&lt;li&gt;secret&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分&lt;br&gt;
 &lt;code&gt;密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和验证，所以需要保护好&lt;/code&gt;&lt;/p&gt;
