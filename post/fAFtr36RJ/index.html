@@ -8,7 +8,7 @@
 <meta name="keywords" content="Wangcx&#39;s Notebook">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>博客换到GitHub | Wangcx&#39;s NoteBook</title>
+<title>JWT Token | Wangcx&#39;s NoteBook</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1611641471435">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="博客换到GitHub" />
-  <meta name="keywords" content="编程生涯" />
+  <meta name="description" content="JWT Token" />
+  <meta name="keywords" content="" />
   <!-- require APlayer -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
@@ -203,7 +203,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -259,6 +260,202 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8jwt">为什么使用JWT？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%94%A8json-web-tokens">什么时候你应该用JSON Web Tokens</a></li>
+<li><a href="#json-web-token%E7%9A%84%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84">JSON Web Token的结构是什么样的</a></li>
+<li><a href="#json-web-tokens%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">JSON Web Tokens是如何工作的</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -346,8 +543,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wangchunxiang.github.io/post/u2ARg23Bp/">
-      博客换到GitHub
+    <a class="post-title-link" href="https://wangchunxiang.github.io/post/fAFtr36RJ/">
+      JWT Token
     </a>
   </h1>
   <div class="post-meta">
@@ -355,36 +552,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-07-19 00:00:00">2019-07-19</span>
+      <span class="publish-time" data-t="2021-01-26 13:53:48">2021-01-26</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://wangchunxiang.github.io/tag/-t0I-Cc83/">
-        <span>编程生涯</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1<span class="language" data-lan="minute">分钟</span></span>
+      <span>4<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>108<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1039<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/u2ARg23Bp/" data-flag-title="博客换到GitHub" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/fAFtr36RJ/" data-flag-title="JWT Token" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -393,8 +577,85 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>博客每次都换来换去，用过emlog，typecho，甚至大名鼎鼎的wordpress，但是都因为这样那样的原因没有坚持下去，最终换到github了，不出意外的话，应该不折腾了，一方面没有太多的时间和精力，另一方面是因为发现每次折腾博客代码的时间，远远大于静下心来写东西的时间，有违初衷。</p>
-<!-- more -->
+              <h3 id="为什么使用jwt">为什么使用JWT？</h3>
+<p>随着技术的发展，分布式web应用的普及，通过session管理用户登录状态成本越来越高，因此慢慢发展成为token的方式做登录身份校验，然后通过token去取redis中的缓存的用户信息，随着之后jwt的出现，校验方式更加简单便捷化，无需通过redis缓存，而是直接根据token取出保存的用户信息，以及对token可用性校验，单点登录更为简单。</p>
+<h3 id="什么时候你应该用json-web-tokens">什么时候你应该用JSON Web Tokens</h3>
+<p><strong>下列场景中使用JSON Web Token是很有用的：</strong></p>
+<ul>
+<li><strong>Authorization (授权)</strong><br>
+这是使用JWT的最常见场景。一旦用户登录，后续每个请求都将包含JWT，允许用户访问该令牌允许的路由、服务和资源。单点登录是现在广泛使用的JWT的一个特性，因为它的开销很小，并且可以轻松地跨域使用。</li>
+<li><strong>Information Exchange (信息交换)</strong><br>
+对于安全的在各方之间传输信息而言，JSON Web Tokens无疑是一种很好的方式。因为JWTs可以被签名，例如，用公钥/私钥对，你可以确定发送人就是它们所说的那个人。另外，由于签名是使用头部和有效负载计算的，您还可以验证内容没有被篡改。</li>
+</ul>
+<h3 id="json-web-token的结构是什么样的">JSON Web Token的结构是什么样的</h3>
+<p>JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：</p>
+<ul>
+<li><strong>Header</strong>（头部）</li>
+<li><strong>Payload</strong>（载荷）</li>
+<li><strong>Signature</strong>（签证）<br>
+因此，一个典型的JWT看起来是这个样子的：</li>
+</ul>
+<pre><code>xxxxx.yyyyy.zzzzz
+</code></pre>
+<p>接下来，具体看一下每一部分：</p>
+<ul>
+<li><strong>Header</strong>（头部）jwt的头部承载两部分信息：
+<ul>
+<li>typ（声明类型） 这里是jwt</li>
+<li>alg（声明加密的算法） 通常直接使用 HMAC SHA256</li>
+</ul>
+</li>
+</ul>
+<p>例如：</p>
+<pre><code class="language-json">{
+&quot;typ&quot;:&quot;JWT&quot;,
+&quot;alg&quot;:&quot;HMAC&quot;
+}
+</code></pre>
+<p>然后，用Base64对这个JSON编码就得到JWT的第一部分</p>
+<ul>
+<li><strong>Payload</strong>（载荷）载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分
+<ul>
+<li>Registered claims（标准中注册的声明,建议但不强制使用）
+<ul>
+<li>iss: jwt签发者</li>
+<li>sub: jwt所面向的用户</li>
+<li>aud: 接收jwt的一方</li>
+<li>exp: jwt的过期时间，这个过期时间必须要大于签发时间</li>
+<li>nbf: 定义在什么时间之前，该jwt都是不可用的</li>
+<li>iat: jwt的签发时间</li>
+<li>jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击</li>
+</ul>
+</li>
+<li>Public claims（公共的声明）公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息.但不建议添加敏感信息，因为该部分在客户端可解密</li>
+<li>Private claims（私有的声明）私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息</li>
+</ul>
+</li>
+</ul>
+<p>下面是一个例子：</p>
+<pre><code class="language-json">{
+&quot;name&quot;:&quot;wangcx&quot;,
+&quot;age&quot;:&quot;18&quot;,
+&quot;sex&quot;:&quot;男&quot;
+}
+</code></pre>
+<p>对payload进行Base64编码就得到JWT的第二部分<br>
+<code>注意，不要在JWT的payload或header中放置敏感信息，除非它们是加密的</code></p>
+<ul>
+<li><strong>Signature</strong>（签证）<br>
+jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</li>
+<li><strong>header</strong> (base64后的)</li>
+<li><strong>payload</strong> (base64后的)</li>
+<li><strong>secret</strong></li>
+</ul>
+<p>这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分<br>
+<code>密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和验证，所以需要保护好</code></p>
+<h3 id="json-web-tokens是如何工作的">JSON Web Tokens是如何工作的</h3>
+<ol>
+<li>应用（或者客户端）向授权服务器请求授权。</li>
+<li>当授权被许可以后，授权服务器返回一个access token给应用</li>
+<li>应用使用access token访问受保护的资源（比如：API）</li>
+</ol>
 
             </div>
             
@@ -407,7 +668,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://wangchunxiang.github.io/post/u2ARg23Bp/" title="博客换到GitHub">https://wangchunxiang.github.io/post/u2ARg23Bp/</a>
+      <a href="https://wangchunxiang.github.io/post/fAFtr36RJ/" title="JWT Token">https://wangchunxiang.github.io/post/fAFtr36RJ/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -416,18 +677,16 @@
   </ul>
   <div class="tags">
     
-      <a href="https://wangchunxiang.github.io/tag/-t0I-Cc83/"># 编程生涯</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="声声慢" href="https://wangchunxiang.github.io/post/y5sSpoeJe/">声声慢</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="声声慢" href="https://wangchunxiang.github.io/post/y5sSpoeJe/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="shiro权限注解" href="https://wangchunxiang.github.io/post/qgKue1rWa/">shiro权限注解</a>
+        <a class="nav-mobile-next" title="shiro权限注解" href="https://wangchunxiang.github.io/post/qgKue1rWa/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

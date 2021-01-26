@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>GitHub文件下载加速 | Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611640138531">
+<link rel="shortcut icon" href="/favicon.ico?v=1611641471435">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -220,7 +220,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">12</span>
+        <span class="site-item-stat-count">13</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1460,6 +1460,96 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/fAFtr36RJ/"" data-c="
+          &lt;h3 id=&#34;为什么使用jwt&#34;&gt;为什么使用JWT？&lt;/h3&gt;
+&lt;p&gt;随着技术的发展，分布式web应用的普及，通过session管理用户登录状态成本越来越高，因此慢慢发展成为token的方式做登录身份校验，然后通过token去取redis中的缓存的用户信息，随着之后jwt的出现，校验方式更加简单便捷化，无需通过redis缓存，而是直接根据token取出保存的用户信息，以及对token可用性校验，单点登录更为简单。&lt;/p&gt;
+&lt;h3 id=&#34;什么时候你应该用json-web-tokens&#34;&gt;什么时候你应该用JSON Web Tokens&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;下列场景中使用JSON Web Token是很有用的：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Authorization (授权)&lt;/strong&gt;&lt;br&gt;
+这是使用JWT的最常见场景。一旦用户登录，后续每个请求都将包含JWT，允许用户访问该令牌允许的路由、服务和资源。单点登录是现在广泛使用的JWT的一个特性，因为它的开销很小，并且可以轻松地跨域使用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Information Exchange (信息交换)&lt;/strong&gt;&lt;br&gt;
+对于安全的在各方之间传输信息而言，JSON Web Tokens无疑是一种很好的方式。因为JWTs可以被签名，例如，用公钥/私钥对，你可以确定发送人就是它们所说的那个人。另外，由于签名是使用头部和有效负载计算的，您还可以验证内容没有被篡改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;json-web-token的结构是什么样的&#34;&gt;JSON Web Token的结构是什么样的&lt;/h3&gt;
+&lt;p&gt;JSON Web Token由三部分组成，它们之间用圆点(.)连接。这三部分分别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Header&lt;/strong&gt;（头部）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payload&lt;/strong&gt;（载荷）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signature&lt;/strong&gt;（签证）&lt;br&gt;
+因此，一个典型的JWT看起来是这个样子的：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;xxxxx.yyyyy.zzzzz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;接下来，具体看一下每一部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Header&lt;/strong&gt;（头部）jwt的头部承载两部分信息：
+&lt;ul&gt;
+&lt;li&gt;typ（声明类型） 这里是jwt&lt;/li&gt;
+&lt;li&gt;alg（声明加密的算法） 通常直接使用 HMAC SHA256&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+&amp;quot;typ&amp;quot;:&amp;quot;JWT&amp;quot;,
+&amp;quot;alg&amp;quot;:&amp;quot;HMAC&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后，用Base64对这个JSON编码就得到JWT的第一部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Payload&lt;/strong&gt;（载荷）载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分
+&lt;ul&gt;
+&lt;li&gt;Registered claims（标准中注册的声明,建议但不强制使用）
+&lt;ul&gt;
+&lt;li&gt;iss: jwt签发者&lt;/li&gt;
+&lt;li&gt;sub: jwt所面向的用户&lt;/li&gt;
+&lt;li&gt;aud: 接收jwt的一方&lt;/li&gt;
+&lt;li&gt;exp: jwt的过期时间，这个过期时间必须要大于签发时间&lt;/li&gt;
+&lt;li&gt;nbf: 定义在什么时间之前，该jwt都是不可用的&lt;/li&gt;
+&lt;li&gt;iat: jwt的签发时间&lt;/li&gt;
+&lt;li&gt;jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Public claims（公共的声明）公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息.但不建议添加敏感信息，因为该部分在客户端可解密&lt;/li&gt;
+&lt;li&gt;Private claims（私有的声明）私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面是一个例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+&amp;quot;name&amp;quot;:&amp;quot;wangcx&amp;quot;,
+&amp;quot;age&amp;quot;:&amp;quot;18&amp;quot;,
+&amp;quot;sex&amp;quot;:&amp;quot;男&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对payload进行Base64编码就得到JWT的第二部分&lt;br&gt;
+&lt;code&gt;注意，不要在JWT的payload或header中放置敏感信息，除非它们是加密的&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Signature&lt;/strong&gt;（签证）&lt;br&gt;
+jwt的第三部分是一个签证信息，这个签证信息由三部分组成：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;header&lt;/strong&gt; (base64后的)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;payload&lt;/strong&gt; (base64后的)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;secret&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分&lt;br&gt;
+&lt;code&gt;密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和验证，所以需要保护好&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;json-web-tokens是如何工作的&#34;&gt;JSON Web Tokens是如何工作的&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;应用（或者客户端）向授权服务器请求授权。&lt;/li&gt;
+&lt;li&gt;当授权被许可以后，授权服务器返回一个access token给应用&lt;/li&gt;
+&lt;li&gt;应用使用access token访问受保护的资源（比如：API）&lt;/li&gt;
+&lt;/ol&gt;
+">JWT Token</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/about/"" data-c="
+          &lt;p&gt;About&lt;/p&gt;
+">关于</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/qgKue1rWa/"" data-c="
