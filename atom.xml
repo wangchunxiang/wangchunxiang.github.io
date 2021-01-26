@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangchunxiang.github.io</id>
     <title>Wangcx&apos;s NoteBook</title>
-    <updated>2021-01-26T03:17:01.958Z</updated>
+    <updated>2021-01-26T05:49:17.155Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangchunxiang.github.io"/>
     <link rel="self" href="https://wangchunxiang.github.io/atom.xml"/>
@@ -10,10 +10,173 @@
     <icon>https://wangchunxiang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Wangcx&apos;s NoteBook</rights>
     <entry>
-        <title type="html"><![CDATA[博客换到github了]]></title>
-        <id>https://wangchunxiang.github.io/post/bo-ke-huan-dao-github-liao/</id>
-        <link href="https://wangchunxiang.github.io/post/bo-ke-huan-dao-github-liao/">
+        <title type="html"><![CDATA[shiro权限注解]]></title>
+        <id>https://wangchunxiang.github.io/post/qgKue1rWa/</id>
+        <link href="https://wangchunxiang.github.io/post/qgKue1rWa/">
         </link>
-        <updated>2021-07-19T01:34:12.000Z</updated>
+        <updated>2020-12-07T11:34:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>Shiro 提供了相应的注解用于权限控制，如果使用这些注解就需要使用AOP 的功能来进行判断，如Spring AOP；Shiro 提供了Spring AOP 集成用于权限注解的解析和验证。</p>
+<pre><code>@RequiresAuthentication
+</code></pre>
+<p>表示当前Subject已经通过login 进行了身份验证；即Subject.isAuthenticated()返回true。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Shiro 提供了相应的注解用于权限控制，如果使用这些注解就需要使用AOP 的功能来进行判断，如Spring AOP；Shiro 提供了Spring AOP 集成用于权限注解的解析和验证。</p>
+<pre><code>@RequiresAuthentication
+</code></pre>
+<p>表示当前Subject已经通过login 进行了身份验证；即Subject.isAuthenticated()返回true。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GitHub文件下载加速]]></title>
+        <id>https://wangchunxiang.github.io/post/EMSDlYCwH/</id>
+        <link href="https://wangchunxiang.github.io/post/EMSDlYCwH/">
+        </link>
+        <updated>2020-09-15T07:33:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>github上有非常多的开源项目，可每次下载的时候速度却非常慢，分享几个提供在线加速的网站<br>
+<a href="http://toolwa.com/github">http://toolwa.com/github</a><br>
+<a href="https://d.serctl.com">https://d.serctl.com</a><br>
+<a href="https://gh.api.99988866.xyz">https://gh.api.99988866.xyz</a><br>
+<a href="https://g.ioiox.com">https://g.ioiox.com</a><br>
+<a href="http://gitd.cc">http://gitd.cc</a><br>
+<a href="https://gh.sky-and-poem.fun">https://gh.sky-and-poem.fun</a><br>
+<a href="https://github.zhlh6.cn">https://github.zhlh6.cn</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>github上有非常多的开源项目，可每次下载的时候速度却非常慢，分享几个提供在线加速的网站<br>
+<a href="http://toolwa.com/github">http://toolwa.com/github</a><br>
+<a href="https://d.serctl.com">https://d.serctl.com</a><br>
+<a href="https://gh.api.99988866.xyz">https://gh.api.99988866.xyz</a><br>
+<a href="https://g.ioiox.com">https://g.ioiox.com</a><br>
+<a href="http://gitd.cc">http://gitd.cc</a><br>
+<a href="https://gh.sky-and-poem.fun">https://gh.sky-and-poem.fun</a><br>
+<a href="https://github.zhlh6.cn">https://github.zhlh6.cn</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VUE学习笔记二]]></title>
+        <id>https://wangchunxiang.github.io/post/3YY2qSwa0/</id>
+        <link href="https://wangchunxiang.github.io/post/3YY2qSwa0/">
+        </link>
+        <updated>2020-05-29T03:15:25.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="单向双向数据流及事件绑定">单向双向数据流及事件绑定</h3>
+<h4 id="单向数据流绑定属性值v-bind属性简写为属性">单向数据流绑定属性值<code>v-bind:(属性)</code>简写为<code>:(属性)</code></h4>
+<pre><code class="language-html">&lt;input v-bind:value=&quot;name&quot;  :class=&quot;name&quot; /&gt;
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="单向双向数据流及事件绑定">单向双向数据流及事件绑定</h3>
+<h4 id="单向数据流绑定属性值v-bind属性简写为属性">单向数据流绑定属性值<code>v-bind:(属性)</code>简写为<code>:(属性)</code></h4>
+<pre><code class="language-html">&lt;input v-bind:value=&quot;name&quot;  :class=&quot;name&quot; /&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VUE学习笔记一]]></title>
+        <id>https://wangchunxiang.github.io/post/Zw-aD_R6u/</id>
+        <link href="https://wangchunxiang.github.io/post/Zw-aD_R6u/">
+        </link>
+        <updated>2020-05-27T07:32:53.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="下载安装node">下载安装node</h3>
+<h3 id="执行如下命令安装vue如需下载特定版本在vue后边加上版本号例如vue25">执行如下命令安装vue(如需下载特定版本在vue后边加上@版本号，例如：<code>vue@2.5</code>)</h3>
+<p><code>cnpm</code>为国内镜像站</p>
+<pre><code class="language-bash">cnpm install vue 
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="下载安装node">下载安装node</h3>
+<h3 id="执行如下命令安装vue如需下载特定版本在vue后边加上版本号例如vue25">执行如下命令安装vue(如需下载特定版本在vue后边加上@版本号，例如：<code>vue@2.5</code>)</h3>
+<p><code>cnpm</code>为国内镜像站</p>
+<pre><code class="language-bash">cnpm install vue 
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Homebrew 修改源]]></title>
+        <id>https://wangchunxiang.github.io/post/3nM-03keu/</id>
+        <link href="https://wangchunxiang.github.io/post/3nM-03keu/">
+        </link>
+        <updated>2020-05-14T09:07:04.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="切换brew源为国内镜像站">切换brew源为国内镜像站</h3>
+<h4 id="替换brewgit">替换brew.git</h4>
+<pre><code class="language-bash">cd &quot;$(brew --repo)&quot;
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="切换brew源为国内镜像站">切换brew源为国内镜像站</h3>
+<h4 id="替换brewgit">替换brew.git</h4>
+<pre><code class="language-bash">cd &quot;$(brew --repo)&quot;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mac下安装HomeBrew]]></title>
+        <id>https://wangchunxiang.github.io/post/UZRPlBp0k/</id>
+        <link href="https://wangchunxiang.github.io/post/UZRPlBp0k/">
+        </link>
+        <updated>2020-05-11T03:25:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>运行以下自动安装脚本：</p>
+<pre><code class="language-bash">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p>运行以下自动安装脚本：</p>
+<pre><code class="language-bash">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[屏蔽MacOS Catalina的更新]]></title>
+        <id>https://wangchunxiang.github.io/post/V1qrPLxWE/</id>
+        <link href="https://wangchunxiang.github.io/post/V1qrPLxWE/">
+        </link>
+        <updated>2019-11-14T01:05:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>MacOS Mojave软件更新变为独立的功能存在于系统偏好设置里面，并且可以直接自动检测大版本的升级。Catalina系统刚放出还有不少bug，而且从Catalina开始不支持32程序了。所以我并不想升级到MacOS Catalina，但是每次看到软件更新的小红点，强迫症发作。以下这个办法可以屏蔽已经检测到的升级，并且去掉烦人的小红点。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>MacOS Mojave软件更新变为独立的功能存在于系统偏好设置里面，并且可以直接自动检测大版本的升级。Catalina系统刚放出还有不少bug，而且从Catalina开始不支持32程序了。所以我并不想升级到MacOS Catalina，但是每次看到软件更新的小红点，强迫症发作。以下这个办法可以屏蔽已经检测到的升级，并且去掉烦人的小红点。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[1024，节日快乐]]></title>
+        <id>https://wangchunxiang.github.io/post/edhk_1Os9/</id>
+        <link href="https://wangchunxiang.github.io/post/edhk_1Os9/">
+        </link>
+        <updated>2019-10-24T03:39:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>1024程序员节是中国广大程序员的共同节日。1024是2的十次方，二进制计数的基本计量单位之一。程序员(英文Programmer)是从事前端、后端程序开发、系统运维、测试等的专业人员。程序员就像是一个个1024，以最低调、踏实、核心的功能模块搭建起这个科技世界。1G=1024M，而1G与1级谐音，也有一级棒的意思。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>1024程序员节是中国广大程序员的共同节日。1024是2的十次方，二进制计数的基本计量单位之一。程序员(英文Programmer)是从事前端、后端程序开发、系统运维、测试等的专业人员。程序员就像是一个个1024，以最低调、踏实、核心的功能模块搭建起这个科技世界。1G=1024M，而1G与1级谐音，也有一级棒的意思。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[macOS JDK多版本配置及切换]]></title>
+        <id>https://wangchunxiang.github.io/post/q7KSfPGKv/</id>
+        <link href="https://wangchunxiang.github.io/post/q7KSfPGKv/">
+        </link>
+        <updated>2019-10-11T06:11:41.000Z</updated>
+        <summary type="html"><![CDATA[<h3 id="首先安装需要的jdk版本">首先安装需要的JDK版本</h3>
+<p>略.</p>
+<h3 id="配置jdk">配置JDK</h3>
+<h4 id="创建bash_profile配置文件已经有该文件就跳过此步骤">创建.bash_profile配置文件（已经有该文件就跳过此步骤）</h4>
+<pre><code class="language-bash">touch ~/.bash_profile
+</code></pre>
+<h4 id="vim编辑bash_profile文件">vim编辑.bash_profile文件</h4>
+<pre><code class="language-bash">vim ~/.bash_profile
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h3 id="首先安装需要的jdk版本">首先安装需要的JDK版本</h3>
+<p>略.</p>
+<h3 id="配置jdk">配置JDK</h3>
+<h4 id="创建bash_profile配置文件已经有该文件就跳过此步骤">创建.bash_profile配置文件（已经有该文件就跳过此步骤）</h4>
+<pre><code class="language-bash">touch ~/.bash_profile
+</code></pre>
+<h4 id="vim编辑bash_profile文件">vim编辑.bash_profile文件</h4>
+<pre><code class="language-bash">vim ~/.bash_profile
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[换了2019 MacBook Pro 15]]></title>
+        <id>https://wangchunxiang.github.io/post/u-btB0Tzx/</id>
+        <link href="https://wangchunxiang.github.io/post/u-btB0Tzx/">
+        </link>
+        <updated>2019-10-11T06:09:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>以前的笔记本是几年前买的，雷神G150T（好像是这个型号吧），四代i7标压处理器，8g内存，后来自己又加装了一条128的SSD，服役多年，而且idea跑的项目一多，风扇转的呼呼的，内存也时不时告警，于是萌生了换macbook的想法</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>以前的笔记本是几年前买的，雷神G150T（好像是这个型号吧），四代i7标压处理器，8g内存，后来自己又加装了一条128的SSD，服役多年，而且idea跑的项目一多，风扇转的呼呼的，内存也时不时告警，于是萌生了换macbook的想法</p>
+]]></content>
     </entry>
 </feed>

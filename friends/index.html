@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611630458617">
+<link rel="shortcut icon" href="/favicon.ico?v=1611640138531">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -62,6 +62,8 @@
             </a>  
           
         </div>
+        
+          <p class="subtitle">精于心，简于形</p>
         
       </div>
       <nav class="site-nav" id="site_nav">
@@ -196,19 +198,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">12</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -220,12 +222,13 @@
     <div class="sidebar-item sidebar-item-social">
       <div class="social-item">
         
+        
           
-            <a href="https://github.com/wangchunxiang">
-              <i class="fa fa-github-alt" title="GitHub"></i>
+            <a class="social-img" href="#">
+              <img src="" />
+              <i class="fa fa-globe" title="" ></i>
             </a>
           
-        
         
       </div>
     </div>
@@ -1109,10 +1112,336 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/bo-ke-huan-dao-github-liao/"" data-c="
-          &lt;p&gt;博客每次都换来换去，用过emlog，typecho，甚至大名鼎鼎的wordpress，但是都因为这样那样的原因没有坚持下去（&lt;s&gt;主要原因是服务器费用的开销&lt;/s&gt;）&lt;br&gt;
-终于换到github了，不出意外的话，应该不折腾了，一方面没有太多的时间和精力，另一方面是因为发现每次折腾博客代码的时间，远远大于静下心来写东西的时间，有违初衷。&lt;/p&gt;
-">博客换到github了</a>
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/qgKue1rWa/"" data-c="
+          &lt;p&gt;Shiro 提供了相应的注解用于权限控制，如果使用这些注解就需要使用AOP 的功能来进行判断，如Spring AOP；Shiro 提供了Spring AOP 集成用于权限注解的解析和验证。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@RequiresAuthentication
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;表示当前Subject已经通过login 进行了身份验证；即Subject.isAuthenticated()返回true。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;pre&gt;&lt;code&gt;@RequiresUser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;表示当前Subject已经身份验证或者通过记住我登录的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@RequiresGuest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;表示当前Subject没有身份验证或通过记住我登录过，即是游客身份。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@RequiresRoles(value={&amp;quot;admin&amp;quot;, &amp;quot;user&amp;quot;}, logical= Logical.AND)
+@RequiresRoles(value={&amp;quot;admin&amp;quot;})
+@RequiresRoles({&amp;quot;admin&amp;quot;})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;表示当前Subject需要角色admin 和user。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@RequiresPermissions (value={“user:a”, “user:b”}, logical= Logical.OR)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;表示当前subject需要权限usera或userb&#34;&gt;表示当前Subject需要权限user:a或user:b。&lt;/h2&gt;
+&lt;p&gt;Shiro的认证注解处理是有内定的处理顺序的，如果有多个注解的话，前面的通过了会继续检查后面的，若不通过则直接返回，处理顺序依次为（与实际声明顺序无关）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. RequiresRoles
+2. RequiresPermissions
+3. RequiresAuthentication
+4. RequiresUser
+5. RequiresGuest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上注解既可以用在controller中，也可以用在service中使用；&lt;br&gt;
+建议将shiro注解放在controller中，因为如果service层使用了spring的事物注解，那么shiro注解将无效。&lt;/p&gt;
+">shiro权限注解</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/EMSDlYCwH/"" data-c="
+          &lt;p&gt;github上有非常多的开源项目，可每次下载的时候速度却非常慢，分享几个提供在线加速的网站&lt;br&gt;
+&lt;a href=&#34;http://toolwa.com/github&#34;&gt;http://toolwa.com/github&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://d.serctl.com&#34;&gt;https://d.serctl.com&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gh.api.99988866.xyz&#34;&gt;https://gh.api.99988866.xyz&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://g.ioiox.com&#34;&gt;https://g.ioiox.com&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://gitd.cc&#34;&gt;http://gitd.cc&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gh.sky-and-poem.fun&#34;&gt;https://gh.sky-and-poem.fun&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://github.zhlh6.cn&#34;&gt;https://github.zhlh6.cn&lt;/a&gt;&lt;/p&gt;
+&lt;!-- more --&gt;
+">GitHub文件下载加速</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/3YY2qSwa0/"" data-c="
+          &lt;h3 id=&#34;单向双向数据流及事件绑定&#34;&gt;单向双向数据流及事件绑定&lt;/h3&gt;
+&lt;h4 id=&#34;单向数据流绑定属性值v-bind属性简写为属性&#34;&gt;单向数据流绑定属性值&lt;code&gt;v-bind:(属性)&lt;/code&gt;简写为&lt;code&gt;:(属性)&lt;/code&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;input v-bind:value=&amp;quot;name&amp;quot;  :class=&amp;quot;name&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;h4 id=&#34;双向数据流v-model只作用于有value属性的元素&#34;&gt;双向数据流&lt;code&gt;v-model&lt;/code&gt;只作用于有value属性的元素&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;input v-model=&amp;quot;name&amp;quot; v-bind:class&amp;quot;name&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;事件绑定v-on事件名表达式函数名简写名事件名表达式函数名&#34;&gt;事件绑定&lt;code&gt;v-on:事件名=&amp;quot;表达式||函数名&amp;quot;&lt;/code&gt;简写&lt;code&gt;@名事件名=&amp;quot;表达式||函数名&amp;quot;&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;事件名可以是原生也可以是自定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;所有示例如下&#34;&gt;所有示例如下&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+        &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+        &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt;
+        &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;script&amp;gt;
+            var vm=new Vue({
+            el:&#39;#app&#39;,
+            template:`&amp;lt;div&amp;gt;
+                    单向数据绑定：
+                    &amp;lt;input type=&amp;quot;text&amp;quot; v-bind:value=&amp;quot;name&amp;quot; :class=&amp;quot;name&amp;quot; /&amp;gt;
+                    &amp;lt;br&amp;gt;
+                    双向数据绑定
+                    &amp;lt;input type=&amp;quot;text&amp;quot; v-model:value=&amp;quot;name&amp;quot; /&amp;gt;
+                    &amp;lt;br&amp;gt;
+                    {{name}}
+                    &amp;lt;br&amp;gt;
+                    &amp;lt;button v-on:click=&amp;quot;change&amp;quot;&amp;gt; click me &amp;lt;/button&amp;gt;
+                &amp;lt;/div&amp;gt;`,
+            data:function(){
+                return {name:&amp;quot;hello&amp;quot;}
+            },
+            methods:{change:function(){
+                this.name=&#39;change ok&#39;
+            }}
+            });
+        &amp;lt;/script&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+">VUE学习笔记二</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/Zw-aD_R6u/"" data-c="
+          &lt;h3 id=&#34;下载安装node&#34;&gt;下载安装node&lt;/h3&gt;
+&lt;h3 id=&#34;执行如下命令安装vue如需下载特定版本在vue后边加上版本号例如vue25&#34;&gt;执行如下命令安装vue(如需下载特定版本在vue后边加上@版本号，例如：&lt;code&gt;vue@2.5&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;cnpm&lt;/code&gt;为国内镜像站&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cnpm install vue 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;h3 id=&#34;页面引入vuejs&#34;&gt;页面引入&lt;code&gt;vue.js&lt;/code&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;页面上预留vue模板插入的位置&#34;&gt;页面上预留vue模板插入的位置&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;实例化vue&#34;&gt;实例化vue&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;new Vue({el:预留位置,template:模板内容}); #实例化传入的是一个对象options
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;options：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;el 对应上边预留的vue模板位置，可通过id，类名，标签名查找，方式等同jquery；&lt;/li&gt;
+&lt;li&gt;template 内容&lt;/li&gt;
+&lt;li&gt;data 数据，值为函数形式，也可以是对象，但都是用函数，因为用的函数最后也是return一个对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;插值表达式&#34;&gt;插值表达式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;插值表达式内填入data里面的变量即可在页面取到变量值{{data里的变量}}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代码示例&#34;&gt;代码示例&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;html&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;title&amp;gt;test&amp;lt;/title&amp;gt;
+        &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+		&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+        &amp;lt;script&amp;gt;
+            new Vue({
+                el:&#39;#app&#39;,
+                template:`&amp;lt;div&amp;gt;你好，世界，{{text}}&amp;lt;/div&amp;gt;`,
+                data:function(){
+                    return{
+                        text:&#39;这是vue的测试&#39;,
+                    }
+                }
+            })
+        &amp;lt;/script&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+">VUE学习笔记一</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/3nM-03keu/"" data-c="
+          &lt;h3 id=&#34;切换brew源为国内镜像站&#34;&gt;切换brew源为国内镜像站&lt;/h3&gt;
+&lt;h4 id=&#34;替换brewgit&#34;&gt;替换brew.git&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd &amp;quot;$(brew --repo)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;ul&gt;
+&lt;li&gt;中国科大源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;清华大学源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;替换homebrew-coregit&#34;&gt;替换homebrew-core.git:&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd &amp;quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;中国科大源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;清华大学源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;替换homebrew-bottles&#34;&gt;替换homebrew-bottles:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;中国科大源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#39; &amp;gt;&amp;gt; ~/.bash_profile
+source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;清华大学源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;echo &#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#39; &amp;gt;&amp;gt; ~/.bash_profile
+source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;应用生效&#34;&gt;应用生效&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;brew update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;切换brew源为默认值&#34;&gt;切换brew源为默认值&lt;/h3&gt;
+&lt;h4 id=&#34;重置brewgit&#34;&gt;重置brew.git&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd &amp;quot;$(brew --repo)&amp;quot;
+git remote set-url origin https://github.com/Homebrew/brew.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;重置homebrew-coregit&#34;&gt;重置homebrew-core.git&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd &amp;quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&amp;quot;
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+&lt;/code&gt;&lt;/pre&gt;
+">Homebrew 修改源</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/UZRPlBp0k/"" data-c="
+          &lt;p&gt;运行以下自动安装脚本：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/bin/zsh -c &amp;quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;国内脚本：&lt;br&gt;
+安装脚本：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/bin/zsh -c &amp;quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;卸载脚本：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;/bin/zsh -c &amp;quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+">Mac下安装HomeBrew</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/V1qrPLxWE/"" data-c="
+          &lt;p&gt;MacOS Mojave软件更新变为独立的功能存在于系统偏好设置里面，并且可以直接自动检测大版本的升级。Catalina系统刚放出还有不少bug，而且从Catalina开始不支持32程序了。所以我并不想升级到MacOS Catalina，但是每次看到软件更新的小红点，强迫症发作。以下这个办法可以屏蔽已经检测到的升级，并且去掉烦人的小红点。&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h3 id=&#34;在终端输入&#34;&gt;在终端输入&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;defaults write com.apple.systempreferences AttentionPrefBundleIDs 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;然后输入&#34;&gt;然后输入&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;killall Dock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：这个不是永久性屏蔽，只要点软件更新就会再次出现。Catalina的更新提示是会和Mojave补丁的一起出现的，升级了安全更新再用终端屏蔽一次就好了。&lt;/p&gt;
+">屏蔽MacOS Catalina的更新</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/edhk_1Os9/"" data-c="
+          &lt;p&gt;1024程序员节是中国广大程序员的共同节日。1024是2的十次方，二进制计数的基本计量单位之一。程序员(英文Programmer)是从事前端、后端程序开发、系统运维、测试等的专业人员。程序员就像是一个个1024，以最低调、踏实、核心的功能模块搭建起这个科技世界。1G=1024M，而1G与1级谐音，也有一级棒的意思。&lt;/p&gt;
+&lt;!-- more --&gt;
+">1024，节日快乐</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/q7KSfPGKv/"" data-c="
+          &lt;h3 id=&#34;首先安装需要的jdk版本&#34;&gt;首先安装需要的JDK版本&lt;/h3&gt;
+&lt;p&gt;略.&lt;/p&gt;
+&lt;h3 id=&#34;配置jdk&#34;&gt;配置JDK&lt;/h3&gt;
+&lt;h4 id=&#34;创建bash_profile配置文件已经有该文件就跳过此步骤&#34;&gt;创建.bash_profile配置文件（已经有该文件就跳过此步骤）&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;touch ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vim编辑bash_profile文件&#34;&gt;vim编辑.bash_profile文件&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
+&lt;h4 id=&#34;如果不习惯vim命令就使用自带的文本编辑器打开&#34;&gt;如果不习惯vim命令就使用自带的文本编辑器打开&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;open ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;设置jdk版本&#34;&gt;设置jdk版本&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export JAVA_11_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.4.jdk/Contents/Home
+export JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_221.jdk/Contents/Home
+export JAVA_HOME=$JAVA_8_HOME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;alias命令动态切换java_home的配置&#34;&gt;alias命令动态切换JAVA_HOME的配置&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;alias jdk8=&#39;export JAVA_HOME=$JAVA_8_HOME&#39;
+alias jdk11=&#39;export JAVA_HOME=$JAVA_11_HOME&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;输入完成后保存执行下面命令重新执行bash_profile文件&#34;&gt;输入完成后保存执行下面命令,重新执行.bash_profile文件&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样以后即可在终端中使用&lt;code&gt;jdk8&lt;/code&gt;或者&lt;code&gt;jdk11&lt;/code&gt;切换jdk版本了&lt;/p&gt;
+">macOS JDK多版本配置及切换</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/u-btB0Tzx/"" data-c="
+          &lt;p&gt;以前的笔记本是几年前买的，雷神G150T（好像是这个型号吧），四代i7标压处理器，8g内存，后来自己又加装了一条128的SSD，服役多年，而且idea跑的项目一多，风扇转的呼呼的，内存也时不时告警，于是萌生了换macbook的想法&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;一是之前用macOS觉得使用体验不错，二是一台macbook正常使用条件下，寿命远远大于同等的windows笔记本，这样算下来，其实价格也比较合算，又加上有教育优惠，白送一个Beats Studio3 Wireless耳机&lt;/p&gt;
+&lt;p&gt;嗯，真香，mac大法好&lt;/p&gt;
+&lt;p&gt;ps：非在校学生，教育优惠可求助万能的某宝！&lt;/p&gt;
+">换了2019 MacBook Pro 15</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/y5sSpoeJe/"" data-c="
+          &lt;p&gt;青砖伴瓦漆&lt;br&gt;
+白马踏新泥&lt;br&gt;
+山花蕉叶暮色丛染红巾&lt;br&gt;
+屋檐洒雨滴&lt;br&gt;
+炊烟袅袅起&lt;br&gt;
+蹉跎辗转宛然的你在哪里&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;寻寻觅觅&lt;br&gt;
+冷冷清清&lt;br&gt;
+月落乌啼月牙落孤井&lt;br&gt;
+零零碎碎&lt;br&gt;
+点点滴滴&lt;br&gt;
+梦里有花梦里青草地&lt;/p&gt;
+&lt;p&gt;长发引涟漪&lt;br&gt;
+白布展石矶&lt;br&gt;
+河童撑杆摆长舟渡古稀&lt;br&gt;
+屋檐洒雨滴&lt;br&gt;
+炊烟袅袅起&lt;br&gt;
+蹉跎辗转宛然的你在哪里&lt;/p&gt;
+&lt;p&gt;寻寻觅觅&lt;br&gt;
+冷冷清清&lt;br&gt;
+月落乌啼月牙落孤井&lt;br&gt;
+零零碎碎&lt;br&gt;
+点点滴滴&lt;br&gt;
+梦里有花梦里青草地&lt;/p&gt;
+&lt;p&gt;青砖伴瓦漆&lt;br&gt;
+白马踏新泥&lt;br&gt;
+山花蕉叶暮色丛染红巾&lt;br&gt;
+屋檐洒雨滴&lt;br&gt;
+炊烟袅袅起&lt;br&gt;
+蹉跎辗转宛然的你在哪里&lt;br&gt;
+&lt;meting-js server=&#34;netease&#34; type=&#34;song&#34; id=&#34;439139384&#34; autoplay=&#34;true&#34;&gt;&lt;/meting-js&gt;&lt;/p&gt;
+">声声慢</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/u2ARg23Bp/"" data-c="
+          &lt;p&gt;博客每次都换来换去，用过emlog，typecho，甚至大名鼎鼎的wordpress，但是都因为这样那样的原因没有坚持下去，最终换到github了，不出意外的话，应该不折腾了，一方面没有太多的时间和精力，另一方面是因为发现每次折腾博客代码的时间，远远大于静下心来写东西的时间，有违初衷。&lt;/p&gt;
+&lt;!-- more --&gt;
+">博客换到GitHub</a>
       </div>
       
     </div>
