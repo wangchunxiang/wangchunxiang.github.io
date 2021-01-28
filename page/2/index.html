@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611832223109">
+<link rel="shortcut icon" href="/favicon.ico?v=1611832320335">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -776,6 +776,7 @@
 通过搜索得知问题在于jdbc的连接参数上，大多数博客给出的默认jdbc连接参数都类似：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=UTC
 &lt;/code&gt;&lt;/pre&gt;
+&lt;!-- more --&gt;
 &lt;p&gt;问题出在&lt;code&gt;serverTimezone=UTC&lt;/code&gt;这个配置上&lt;br&gt;
 UTC，简称世界统一时间，跟北京时间相比，比北京早8个小时&lt;br&gt;
 如果定义了&lt;code&gt;serverTimezone=UTC&lt;/code&gt;，那么在你编译器上执行的SQL语句，会先以UTC时区进行存储，发送到MySQL,然后MySQL以本地时区进行转换，就会导致，同一段SQL语句，在Navicat直接执行，与IDEA执行，结果不同&lt;/p&gt;

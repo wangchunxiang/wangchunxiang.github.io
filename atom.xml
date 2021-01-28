@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangchunxiang.github.io</id>
     <title>Wangcx&apos;s NoteBook</title>
-    <updated>2021-01-28T11:10:25.916Z</updated>
+    <updated>2021-01-28T11:12:17.683Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangchunxiang.github.io"/>
     <link rel="self" href="https://wangchunxiang.github.io/atom.xml"/>
@@ -15,6 +15,16 @@
         <link href="https://wangchunxiang.github.io/post/_922z5lh6/">
         </link>
         <updated>2021-01-28T10:56:38.000Z</updated>
+        <summary type="html"><![CDATA[<p>在程序中进行update操作时候，发现插入时间错误，IDEA执行的sql与本机（北京时间）相差8个小时，而在Navicat直接执行，则不能复现问题<br>
+通过搜索得知问题在于jdbc的连接参数上，大多数博客给出的默认jdbc连接参数都类似：</p>
+<pre><code>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p>在程序中进行update操作时候，发现插入时间错误，IDEA执行的sql与本机（北京时间）相差8个小时，而在Navicat直接执行，则不能复现问题<br>
+通过搜索得知问题在于jdbc的连接参数上，大多数博客给出的默认jdbc连接参数都类似：</p>
+<pre><code>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC
+</code></pre>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[JWT Token]]></title>
