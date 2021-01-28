@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>JWT Token | Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611707793981">
+<link rel="shortcut icon" href="/favicon.ico?v=1611832223109">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -219,7 +219,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">13</span>
+        <span class="site-item-stat-count">14</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -668,6 +668,10 @@
   <div class="nav">
     <div class="nav-prev">
       
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="MySQL插入时间差八小时问题" href="https://wangchunxiang.github.io/post/_922z5lh6/">MySQL插入时间差八小时问题</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="MySQL插入时间差八小时问题" href="https://wangchunxiang.github.io/post/_922z5lh6/">上一篇</a>
+      
     </div>
     <div class="nav-next">
       
@@ -736,8 +740,9 @@
     <div class="footer-box">
   <footer class="footer">
     <div class="copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a
+      Powered by <a href="https://wangcx.me" target="_blank">Wangcx.me</a> | © 2019-2020 Theme By <a
         href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+        网站运行时长:<span id=span_dt_dt style="color: #999;"></span>
     </div>
     <div class="poweredby">
       
@@ -901,7 +906,7 @@
 
   // 代码高亮
   hljs.initHighlightingOnLoad();
-  
+
   // 离开当前页title变化
   var leaveTitle = "";
   if (leaveTitle) {
@@ -935,6 +940,27 @@
     aelem.appendChild(image);
     parent.insertBefore(aelem, next);
   })
+</script>
+<!--网站运行时长-->
+<script language=javascript>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("19/7/2019 00:00:00");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        span_dt_dt.innerHTML='<font style=color:#C40000>'+daysold+'</font> 天 <font style=color:#C40000>'+hrsold+'</font> 时 <font style=color:#C40000>'+minsold+'</font> 分 <font style=color:#C40000>'+seconds+'</font> 秒';
+    }
+    show_date_time();
 </script>
     <div class="reward-mask" style="display: none;">
   <div class="reward-relative">
@@ -1170,6 +1196,22 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/_922z5lh6/"" data-c="
+          &lt;p&gt;在程序中进行update操作时候，发现插入时间错误，IDEA执行的sql与本机（北京时间）相差8个小时，而在Navicat直接执行，则不能复现问题&lt;br&gt;
+通过搜索得知问题在于jdbc的连接参数上，大多数博客给出的默认jdbc连接参数都类似：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=UTC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;问题出在&lt;code&gt;serverTimezone=UTC&lt;/code&gt;这个配置上&lt;br&gt;
+UTC，简称世界统一时间，跟北京时间相比，比北京早8个小时&lt;br&gt;
+如果定义了&lt;code&gt;serverTimezone=UTC&lt;/code&gt;，那么在你编译器上执行的SQL语句，会先以UTC时区进行存储，发送到MySQL,然后MySQL以本地时区进行转换，就会导致，同一段SQL语句，在Navicat直接执行，与IDEA执行，结果不同&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;br&gt;
+改为&lt;code&gt;serverTimezone=GMT%2B8&lt;/code&gt;，&lt;code&gt;GMT%2B8&lt;/code&gt;代表是东八区时间，也就是北京时间&lt;br&gt;
+或者&lt;code&gt;serverTimezone=Asia/Shanghai&lt;/code&gt;，&lt;code&gt;Asia/Shanghai&lt;/code&gt;代表上海时间&lt;br&gt;
+上海时间=北京时间=东八区时间&lt;/p&gt;
+">MySQL插入时间差八小时问题</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/fAFtr36RJ/"" data-c="

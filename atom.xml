@@ -2,13 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangchunxiang.github.io</id>
     <title>Wangcx&apos;s NoteBook</title>
-    <updated>2021-01-27T00:36:46.375Z</updated>
+    <updated>2021-01-28T11:10:25.916Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangchunxiang.github.io"/>
     <link rel="self" href="https://wangchunxiang.github.io/atom.xml"/>
     <logo>https://wangchunxiang.github.io/images/avatar.png</logo>
     <icon>https://wangchunxiang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Wangcx&apos;s NoteBook</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL插入时间差八小时问题]]></title>
+        <id>https://wangchunxiang.github.io/post/_922z5lh6/</id>
+        <link href="https://wangchunxiang.github.io/post/_922z5lh6/">
+        </link>
+        <updated>2021-01-28T10:56:38.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JWT Token]]></title>
         <id>https://wangchunxiang.github.io/post/fAFtr36RJ/</id>
@@ -152,33 +159,6 @@
         <summary type="html"><![CDATA[<p>1024程序员节是中国广大程序员的共同节日。1024是2的十次方，二进制计数的基本计量单位之一。程序员(英文Programmer)是从事前端、后端程序开发、系统运维、测试等的专业人员。程序员就像是一个个1024，以最低调、踏实、核心的功能模块搭建起这个科技世界。1G=1024M，而1G与1级谐音，也有一级棒的意思。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>1024程序员节是中国广大程序员的共同节日。1024是2的十次方，二进制计数的基本计量单位之一。程序员(英文Programmer)是从事前端、后端程序开发、系统运维、测试等的专业人员。程序员就像是一个个1024，以最低调、踏实、核心的功能模块搭建起这个科技世界。1G=1024M，而1G与1级谐音，也有一级棒的意思。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[macOS JDK多版本配置及切换]]></title>
-        <id>https://wangchunxiang.github.io/post/q7KSfPGKv/</id>
-        <link href="https://wangchunxiang.github.io/post/q7KSfPGKv/">
-        </link>
-        <updated>2019-10-11T06:11:41.000Z</updated>
-        <summary type="html"><![CDATA[<h3 id="首先安装需要的jdk版本">首先安装需要的JDK版本</h3>
-<p>略.</p>
-<h3 id="配置jdk">配置JDK</h3>
-<h4 id="创建bash_profile配置文件已经有该文件就跳过此步骤">创建.bash_profile配置文件（已经有该文件就跳过此步骤）</h4>
-<pre><code class="language-bash">touch ~/.bash_profile
-</code></pre>
-<h4 id="vim编辑bash_profile文件">vim编辑.bash_profile文件</h4>
-<pre><code class="language-bash">vim ~/.bash_profile
-</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h3 id="首先安装需要的jdk版本">首先安装需要的JDK版本</h3>
-<p>略.</p>
-<h3 id="配置jdk">配置JDK</h3>
-<h4 id="创建bash_profile配置文件已经有该文件就跳过此步骤">创建.bash_profile配置文件（已经有该文件就跳过此步骤）</h4>
-<pre><code class="language-bash">touch ~/.bash_profile
-</code></pre>
-<h4 id="vim编辑bash_profile文件">vim编辑.bash_profile文件</h4>
-<pre><code class="language-bash">vim ~/.bash_profile
-</code></pre>
 ]]></content>
     </entry>
 </feed>
