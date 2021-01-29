@@ -8,7 +8,7 @@
 <meta name="keywords" content="Wangcx&#39;s Notebook">
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
-<title>声声慢 | Wangcx&#39;s NoteBook</title>
+<title>MySQL插入时间错误问题 | Wangcx&#39;s NoteBook</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1611878866391">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="声声慢" />
-  <meta name="keywords" content="文学集锦" />
+  <meta name="description" content="MySQL插入时间错误问题" />
+  <meta name="keywords" content="编程生涯" />
   <!-- require APlayer -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
@@ -330,8 +330,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wangchunxiang.github.io/post/y5sSpoeJe/">
-      声声慢
+    <a class="post-title-link" href="https://wangchunxiang.github.io/post/ikW5KCr7k/">
+      MySQL插入时间错误问题
     </a>
   </h1>
   <div class="post-meta">
@@ -339,7 +339,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2019-07-19 14:02:02">2019-07-19</span>
+      <span class="publish-time" data-t="2021-01-29 08:05:51">2021-01-29</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -348,8 +348,8 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://wangchunxiang.github.io/tag/Etk7uZgf-/">
-        <span>文学集锦</span>
+      <a href="https://wangchunxiang.github.io/tag/-t0I-Cc83/">
+        <span>编程生涯</span>
       </a>
       
       
@@ -363,12 +363,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>191<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>257<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/y5sSpoeJe/" data-flag-title="声声慢" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/ikW5KCr7k/" data-flag-title="MySQL插入时间错误问题" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -377,38 +377,15 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>青砖伴瓦漆<br>
-白马踏新泥<br>
-山花蕉叶暮色丛染红巾<br>
-屋檐洒雨滴<br>
-炊烟袅袅起<br>
-蹉跎辗转宛然的你在哪里</p>
-<!--more-->
-<p>寻寻觅觅<br>
-冷冷清清<br>
-月落乌啼月牙落孤井<br>
-零零碎碎<br>
-点点滴滴<br>
-梦里有花梦里青草地</p>
-<p>长发引涟漪<br>
-白布展石矶<br>
-河童撑杆摆长舟渡古稀<br>
-屋檐洒雨滴<br>
-炊烟袅袅起<br>
-蹉跎辗转宛然的你在哪里</p>
-<p>寻寻觅觅<br>
-冷冷清清<br>
-月落乌啼月牙落孤井<br>
-零零碎碎<br>
-点点滴滴<br>
-梦里有花梦里青草地</p>
-<p>青砖伴瓦漆<br>
-白马踏新泥<br>
-山花蕉叶暮色丛染红巾<br>
-屋檐洒雨滴<br>
-炊烟袅袅起<br>
-蹉跎辗转宛然的你在哪里<br>
-<meting-js server="netease" type="song" id="439139384" autoplay="true"></meting-js></p>
+              <p>在程序中进行update操作时候，发现插入时间错误，IDEA执行的sql与本机（北京时间）相差8个小时，而在Navicat直接执行，则不能复现问题<br>
+通过搜索得知问题在于jdbc的连接参数上，大多数博客给出的默认jdbc连接参数都类似：</p>
+<pre><code>jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC
+</code></pre>
+<!-- more -->
+<p>问题出在<code>serverTimezone=UTC</code>这个配置上，UTC，简称世界统一时间，跟北京时间相比，比北京早8个小时，如果定义了<code>serverTimezone=UTC</code>，那么在你编译器上执行的SQL语句，会先以UTC时区进行存储，发送到MySQL,然后MySQL以本地时区进行转换，就会导致，同一段SQL语句，在Navicat直接执行，与IDEA执行，结果不同</p>
+<p>解决方案：<br>
+改为<code>serverTimezone=GMT%2B8</code>，<code>GMT%2B8</code>代表是东八区时间，也就是北京时间<br>
+或者<code>serverTimezone=Asia/Shanghai</code>，<code>Asia/Shanghai</code>代表上海时间，上海时间=北京时间=东八区时间</p>
 
             </div>
             
@@ -421,7 +398,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://wangchunxiang.github.io/post/y5sSpoeJe/" title="声声慢">https://wangchunxiang.github.io/post/y5sSpoeJe/</a>
+      <a href="https://wangchunxiang.github.io/post/ikW5KCr7k/" title="MySQL插入时间错误问题">https://wangchunxiang.github.io/post/ikW5KCr7k/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -430,21 +407,17 @@
   </ul>
   <div class="tags">
     
-      <a href="https://wangchunxiang.github.io/tag/Etk7uZgf-/"># 文学集锦</a>
+      <a href="https://wangchunxiang.github.io/tag/-t0I-Cc83/"># 编程生涯</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="换了2019 MacBook Pro 15" href="https://wangchunxiang.github.io/post/u-btB0Tzx/">换了2019 MacBook Pro 15</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="换了2019 MacBook Pro 15" href="https://wangchunxiang.github.io/post/u-btB0Tzx/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="博客换到GitHub" href="https://wangchunxiang.github.io/post/u2ARg23Bp/">博客换到GitHub</a>
-        <a class="nav-mobile-next" title="博客换到GitHub" href="https://wangchunxiang.github.io/post/u2ARg23Bp/">下一篇</a>
+        <a class="nav-pc-next" title="JWT Token" href="https://wangchunxiang.github.io/post/fAFtr36RJ/">JWT Token</a>
+        <a class="nav-mobile-next" title="JWT Token" href="https://wangchunxiang.github.io/post/fAFtr36RJ/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

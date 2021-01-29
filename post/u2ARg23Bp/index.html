@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>博客换到GitHub | Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611834116404">
+<link rel="shortcut icon" href="/favicon.ico?v=1611878866391">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -911,20 +911,17 @@
     <div class="result" id="result">
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/_922z5lh6/"" data-c="
+        <a class="result-title" style="opacity: 0;" href="https://wangchunxiang.github.io/post/ikW5KCr7k/"" data-c="
           &lt;p&gt;在程序中进行update操作时候，发现插入时间错误，IDEA执行的sql与本机（北京时间）相差8个小时，而在Navicat直接执行，则不能复现问题&lt;br&gt;
 通过搜索得知问题在于jdbc的连接参数上，大多数博客给出的默认jdbc连接参数都类似：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;serverTimezone=UTC
 &lt;/code&gt;&lt;/pre&gt;
 &lt;!-- more --&gt;
-&lt;p&gt;问题出在&lt;code&gt;serverTimezone=UTC&lt;/code&gt;这个配置上&lt;br&gt;
-UTC，简称世界统一时间，跟北京时间相比，比北京早8个小时&lt;br&gt;
-如果定义了&lt;code&gt;serverTimezone=UTC&lt;/code&gt;，那么在你编译器上执行的SQL语句，会先以UTC时区进行存储，发送到MySQL,然后MySQL以本地时区进行转换，就会导致，同一段SQL语句，在Navicat直接执行，与IDEA执行，结果不同&lt;/p&gt;
+&lt;p&gt;问题出在&lt;code&gt;serverTimezone=UTC&lt;/code&gt;这个配置上，UTC，简称世界统一时间，跟北京时间相比，比北京早8个小时，如果定义了&lt;code&gt;serverTimezone=UTC&lt;/code&gt;，那么在你编译器上执行的SQL语句，会先以UTC时区进行存储，发送到MySQL,然后MySQL以本地时区进行转换，就会导致，同一段SQL语句，在Navicat直接执行，与IDEA执行，结果不同&lt;/p&gt;
 &lt;p&gt;解决方案：&lt;br&gt;
 改为&lt;code&gt;serverTimezone=GMT%2B8&lt;/code&gt;，&lt;code&gt;GMT%2B8&lt;/code&gt;代表是东八区时间，也就是北京时间&lt;br&gt;
-或者&lt;code&gt;serverTimezone=Asia/Shanghai&lt;/code&gt;，&lt;code&gt;Asia/Shanghai&lt;/code&gt;代表上海时间&lt;br&gt;
-上海时间=北京时间=东八区时间&lt;/p&gt;
-">MySQL插入时间差八小时问题</a>
+或者&lt;code&gt;serverTimezone=Asia/Shanghai&lt;/code&gt;，&lt;code&gt;Asia/Shanghai&lt;/code&gt;代表上海时间，上海时间=北京时间=东八区时间&lt;/p&gt;
+">MySQL插入时间错误问题</a>
       </div>
       
       <div class="item">
