@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="theme-color" content="#000">
 <title>JWT Token | Wangcx&#39;s NoteBook</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1611878866391">
+<link rel="shortcut icon" href="/favicon.ico?v=1611884937761">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -20,7 +20,6 @@
   rel="stylesheet">
 
 <link rel="stylesheet" href="/styles/main.css">
-
 <script src="/media/hljs/highlight.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
@@ -33,6 +32,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
   integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
+
 
 
 
@@ -69,6 +69,8 @@
             </a>  
           
         </div>
+        
+          <p class="subtitle">精于心，简于形</p>
         
       </div>
       <nav class="site-nav" id="site_nav">
@@ -646,6 +648,10 @@
 
             </div>
             
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
             
               <div class="post-footer">
   <ul class="post-copyright">
@@ -744,7 +750,7 @@
         href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
     </div>
     <div class="poweredby">
-      
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
     </div>
   </footer>
   
@@ -920,13 +926,12 @@
   }
 
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <script>
   let images = document.querySelectorAll('.section img');
-  console.log(images);
   images.forEach(image => {
     var parent = image.parentElement;
     var next = image.nextElementSibling;
@@ -950,14 +955,26 @@
         <div style="position: relative; width: 140px; height: 140px;">
           
           
+            <img id="zfb" class="reward-img" src="/media/images/custom-zfbImg.png" alt="赞赏码">
+          
+          
+            <img id="wx" class="reward-img" src="/media/images/custom-wxImg.png" alt="赞赏码">
           
         </div>
       </div>
       <p class="reward-word">扫码打赏，你说多少就多少</p>
-      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+      <p class="reward-tip">打开手机扫一扫，即可进行扫码打赏哦</p>
     </div>
     <div class="bottom">
       
+      <div id="zfbBtn" class="pay-text">
+        支付宝
+      </div>
+      
+      
+      <div id="wxBtn" class="pay-text">
+        微信支付
+      </div>
       
     </div>
   </div>
